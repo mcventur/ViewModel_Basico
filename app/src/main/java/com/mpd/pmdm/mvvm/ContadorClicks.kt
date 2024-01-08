@@ -1,6 +1,8 @@
 package com.mpd.pmdm.mvvm
 
-class ContadorClicks {
+import androidx.lifecycle.ViewModel
+
+class ContadorClicks: ViewModel() {
     var cuentaClicks: Int = 0
 
     fun incrementa() = cuentaClicks++
