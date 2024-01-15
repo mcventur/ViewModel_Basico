@@ -1,12 +1,26 @@
 package com.mpd.pmdm.mvvm
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
-class ContadorClicks: ViewModel() {
-    var cuentaClicks: Int = 0
+class ContadorClicks(valorContador: Int): ViewModel() {
+    private val _cuentaClicks = MutableLiveData<Int>(valorContador)
+    val cuentaClicks: LiveData<Int> = _cuentaClicks
 
-    fun incrementa() = cuentaClicks++
+    fun incrementa() {
+        _cuentaClicks.value = cuentaClicks.value?.plus(1)
+    }
 
-    fun decrementa() = cuentaClicks--
+    fun decrementa() {
+        _cuentaClicks.value = cuentaClicks.value?.minus(1)
+    }
+}
 
+class ContadorClickFactory(val valor: Int): ViewModelProvider.Factory{
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return ContadorClicks(valor) as T
+    }
 }
