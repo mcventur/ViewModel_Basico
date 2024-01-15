@@ -41,8 +41,10 @@ android {
 
 dependencies {
     val activity_version = "1.8.2"
+    val fragment_version = "1.6.2"
     // Kotlin
     implementation("androidx.activity:activity-ktx:$activity_version")
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
 
     implementation("androidx.core:core-ktx:1.9.0")
