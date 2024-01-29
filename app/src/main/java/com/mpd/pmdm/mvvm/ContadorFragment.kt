@@ -31,9 +31,13 @@ class ContadorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contadorVM.cuentaClicks.observe(viewLifecycleOwner){
+        binding.contador = contadorVM
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        //Ya no necesitamos indicar un observador, ya que mostramos el LiveData directamente en el layout con DataBinding
+/*        contadorVM.cuentaClicks.observe(viewLifecycleOwner){
             actualizaContador()
-        }
+        }*/
     }
 
     private fun actualizaContador() {
