@@ -1,5 +1,6 @@
 package com.mpd.pmdm.mvvm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,8 +10,13 @@ class ContadorClicks(valorContador: Int): ViewModel() {
     private val _cuentaClicks = MutableLiveData<Int>(valorContador)
     val cuentaClicks: LiveData<Int> = _cuentaClicks
 
+    var nombre = MutableLiveData<String>("")
+
     fun incrementa() {
         _cuentaClicks.value = cuentaClicks.value?.plus(1)
+        Log.d("ViewModel","Nombre: $nombre")
+        nombre.value = nombre.value.plus(" el incrementador")
+        Log.d("ViewModel","Nombre tras concatenar: $nombre")
     }
 
     fun decrementa() {
